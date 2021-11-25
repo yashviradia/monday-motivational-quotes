@@ -19,14 +19,14 @@ with open("quotes.txt") as quote_file:
     monday_quote = random.choice(quote_list)
 
 
-if day_of_week == 2:
+if day_of_week == 0:
     connection = smtplib.SMTP("smtp.gmail.com", port=587)
     connection.starttls()
     connection.login(user=MY_EMAIL, password=PASSWORD)
     connection.sendmail(
             from_addr=MY_EMAIL,
             to_addrs=TO_ADDRS,
-            msg="Hallo."
+            msg=f"Subject:Monday Motivation\n\n{monday_quote}"
     )
     connection.close()
 
